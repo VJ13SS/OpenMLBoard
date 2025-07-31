@@ -1,0 +1,47 @@
+.add-post,.add-post form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-post{
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    font-weight: 500;
+}
+
+.add-post span{
+    font-size: 12px;
+    color: gray;
+}
+
+.add-post form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top:20px;
+}
+
+.add-post form input ,.add-post form textarea{
+    width: 80%;
+    padding: 6px;
+    border-radius: 7px;
+    border: 1px solid gray;
+    outline: none;
+    margin-left: 7px;
+}
+
+.add-post form button{
+    width: 120px;
+    border: none;
+    outline: none;
+    background-color: blue;
+    color: white;
+    font-weight: 500;
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-top: 15px;
+}

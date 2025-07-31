@@ -1,0 +1,67 @@
+.login-popup-overlay{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(128,128,128,0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-popup-overlay form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 50vw;
+    font-weight: 500;
+    position: relative;
+}
+
+.login-popup-overlay form h1{
+    color: blue;
+}
+
+.login-popup-overlay form input{
+    margin-left: 10px;
+    padding: 5px;
+    padding-left: 7px;
+    width: 90%;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid gray;
+}
+
+.login-popup-overlay form span{
+    color: blue;
+}
+
+.login-popup-overlay form button{
+    width: 120px;
+    border: none;
+    outline: none;
+    background-color: blue;
+    color: white;
+    font-weight: 500;
+    padding: 7px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-block: 10px;
+    cursor: pointer;
+}
+
+.login-popup-overlay form p{
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.close-icon{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}

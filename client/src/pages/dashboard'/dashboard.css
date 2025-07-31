@@ -1,0 +1,44 @@
+.dashboard {
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+}
+
+.dashboard__left,
+.dashboard__list {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard__left {
+  width: 25vw;
+  border-right: 2px dashed gray;
+
+  justify-content: space-between;
+  padding: 5px;
+  font-weight: 500;
+}
+
+.dashboard__list {
+  gap: 15px;
+}
+
+.dashboard__list li{
+    padding: 8px;
+    background-color: rgba(210, 208, 208,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dashboard__active{
+    border-left: 5px solid blue;
+}
+
+.dashboard__owner{
+   margin-left: 3px;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.dashboard__right{
+    width: 75vw;
+}

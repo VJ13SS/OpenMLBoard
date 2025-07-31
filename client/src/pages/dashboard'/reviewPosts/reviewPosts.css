@@ -1,0 +1,68 @@
+.review-posts{ 
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+     display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-post{
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+.review-post form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-post form label{
+    text-decoration: underline;
+}
+
+.review-post form textarea{
+    width: 90%;
+    border-radius: 5px;
+    padding: 3px;
+    outline: none;
+}
+
+.review-post__options{
+    display: flex;
+    gap: 15px;
+}
+
+.review-post__options button{
+    border: none;
+    padding: 5px;
+    width: 120px;
+    border-radius: 5px;
+    font-weight: 500;
+    border: 1px solid gray;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.accept{
+    background-color: rgb(68, 242, 68);
+    color: white;
+    border: none;
+}
+
+.modify{
+    background-color: orange;
+    color: white;
+    border: none;
+}
+
+.accept:hover{
+background-color: rgb(20, 194, 20);
+}
+
+.modify:hover{
+background-color: orangered;
+}

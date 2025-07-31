@@ -1,0 +1,60 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 13px;
+    padding: 10px;
+    width: 30vw;
+    min-height: 300px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    border: 2px solid blue;
+    cursor: pointer;
+}
+
+.card h1{
+    font-size: 23px;
+    color: blue;
+}
+
+
+.card__description{
+    font-size: 17px;
+    color: rgb(114, 113, 113);
+    font-weight: 500;
+    max-width: 90%;
+    padding-left: 10px;
+}
+
+.card__footer{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.card__owner{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    color: rgb(7, 141, 9);
+}
+
+.card__difficulty{
+    color: orangered;
+}
+
+@media(max-width:900px){
+    .card{
+        width: 45vw;
+    }
+}
+@media(max-width:615px){
+    .card{
+        width: 85vw;
+    }
+}

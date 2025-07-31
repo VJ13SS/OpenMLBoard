@@ -1,0 +1,34 @@
+.project{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.project h2{
+    color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project p{
+    max-width: 95%;
+}
+
+.project__owner{
+    color: blue;
+}
+
+.project__links{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 90%;
+    overflow-x: scroll;
+}
+
+.project__links span{
+    text-decoration: underline;
+}
