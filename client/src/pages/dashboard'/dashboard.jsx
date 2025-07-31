@@ -59,7 +59,7 @@ export default function Dashboard() {
           >
             View Posts
           </li>
-          {userLoggedIn?.user?.email === "viswajith5749@gmail.com" && (
+          {userLoggedIn?.user?.email === import.meta.env.VITE_ADMIN_EMAIL && (
             <li
               onClick={() => onClickHandler("review-posts")}
               className={`${

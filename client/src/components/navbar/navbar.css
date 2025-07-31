@@ -100,7 +100,6 @@ nav{
 @media(max-width:510px){
     .nav__center{
     gap: 5px;
-    background-color: red;
 }
     .nav__center input{
         width: 45vw;
