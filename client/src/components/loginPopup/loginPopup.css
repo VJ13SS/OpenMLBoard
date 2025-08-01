@@ -65,3 +65,10 @@
     right: 10px;
     cursor: pointer;
 }
+
+
+@media(max-width:520px){
+    .login-popup-overlay form{
+        width: 85vw;
+    }
+}

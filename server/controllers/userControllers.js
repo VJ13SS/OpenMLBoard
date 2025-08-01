@@ -103,10 +103,8 @@ export const addNewProject = async (req, res) => {
     original
   } = req.body;
 
-  console.log(type)
   try {
     const user = req.user;
-
     const exists = await projectModel.findOne({
       createdBy: user._id,
       name: project__name,

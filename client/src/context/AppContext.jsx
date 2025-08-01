@@ -8,7 +8,8 @@ export const AppContextProvider = (props) => {
   const [currentState, setCurrentState] = useState("log-in");
   const [displayLoginPopup, setDisplayLoginPopup] = useState(false);
   const [userDetails, setUserDetails] = useState({}); //fot the login pop up
-  const baseUrl = "http://localhost:5000";
+  //const baseUrl = "http://localhost:5000";
+  const baseUrl = "https://open-ml-board-server.vercel.app";
   const [dashboardOption, setDashboardOption] = useState("add-posts");
   const [editProject, setEditProject] = useState({ type: "edit" });
   const [userLoggedIn, setUserLoggedIn] = useState({});

@@ -18,7 +18,7 @@ export default function Card({ project }) {
       <h1>{project?.name ? project.name : "Project Name"}</h1>
       <p className="card__description">
         {project?.description
-          ? project.description.slice(0, Math.floor(text.length / 4) * 3) + '...'
+          ? project.description.slice(0, Math.floor(project.description.length / 4)) + '...'
           : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptatem eius facere sed sequi, repudiandae consequatur dolorem perferendis animi! Quod, nisi hic. Aliquam expedita enim animi voluptatibus consequatur id quisquam?"}
       </p>
       <div className="card__footer">

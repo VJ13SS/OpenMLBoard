@@ -47,7 +47,7 @@
     padding: 10px;
     border-radius: 15px;
     width: 47%;
-    min-height: 35vh;
+    height: 45vh;
     background-color: white;
     border: 1px solid gray;
     box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2);}
@@ -61,8 +61,11 @@
 .user__contribution p{
     color: gray;
     font-size: 15px;
-    margin-top: 10px;
+    margin-top: 5px;
+    padding: 5px;
     line-height: 30px;
+    height: 90%;
+    overflow-y: scroll;
 }
 
 @media(max-width:1000px){

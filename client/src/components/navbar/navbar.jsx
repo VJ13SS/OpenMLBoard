@@ -20,10 +20,13 @@ export default function Navbar() {
   };
   
   const logOutHandler = () => {
+    navigate('/')
     setUserLoggedIn({});
     localStorage.removeItem("userDetails");
+    
   };
 
+  
   return (
     <nav>
       <div className="nav__left" onClick={() => navigate("/")}>

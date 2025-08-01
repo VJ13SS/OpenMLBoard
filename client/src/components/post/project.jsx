@@ -9,7 +9,7 @@ import axios from "axios";
 export default function Project({ project }) {
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  const { baseUrl,setDashboardOption, setEditProject, getAuthorDetails,deleteProject } = useContext(AppContext);
+  const { baseUrl,setDashboardOption, setEditProject, getAuthorDetails,deleteProject,getUserProjects } = useContext(AppContext);
 
   const onClickHandler = () => {
     //to edit the project
@@ -27,6 +27,7 @@ export default function Project({ project }) {
 
     const response = await axios.post(baseUrl + '/api/user/change-project-visibility',{projectId:project._id,visible:display})
     console.log(response.data.message)
+    getUserProjects()
   }
 
   return (
@@ -80,7 +81,7 @@ export default function Project({ project }) {
         {project?.links ? (
           project.links.map((link, indx) => (
             <a href="#" key={indx}>
-              {link}{" "}
+              {indx + 1}.{')'} {link}{" "}
             </a>
           ))
         ) : (
