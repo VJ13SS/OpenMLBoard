@@ -27,7 +27,7 @@ export default function AddPost() {
       projectDetails,
       { headers: { token: userLoggedIn.token } }
     );
-    setProjectDetails({ type: "add" });
+    setProjectDetails({ type: "add",original:{}});
   };
 
   return (
