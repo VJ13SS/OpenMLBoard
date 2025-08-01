@@ -100,7 +100,10 @@ export const addNewProject = async (req, res) => {
     project__link_2,
     project__category,
     type,
+    original
   } = req.body;
+
+  console.log(type)
   try {
     const user = req.user;
 
@@ -119,27 +122,13 @@ export const addNewProject = async (req, res) => {
     }
 
     if (type === "edit") {
-      await userModel.findOneAndUpdate(
+      await projectModel.findOneAndDelete(
         {
           createdBy: user._id,
-          name: project__name,
-          category: project__category,
-        },
-        {
-          name: project__name,
-          category: project__category,
-          description: project__description,
-          links: [project__link_1, project__link_2],
-          status: "Pending",
-          message: "We are evaluating your work..!",
+          name: original.name,
+          category: original.category,
         }
       );
-
-      console.log("Project Updated Successfully");
-      return res.json({
-        success: true,
-        message: "Project Updated Successfully",
-      });
     }
 
     const newProject = new projectModel({
@@ -148,9 +137,18 @@ export const addNewProject = async (req, res) => {
       category: project__category,
       links: [project__link_1, project__link_2],
       createdBy: user._id,
+      status: "Pending",
+          message: "We are evaluating your work..!",
     });
 
     await newProject.save();
+    if (type === "edit"){
+      console.log("Project Updated Successfully");
+      return res.json({
+        success: true,
+        message: "Project Updated Successfully",
+      });
+    }
     console.log("Project registered");
     return res.json({ success: true, message: "Project requested for review" });
   } catch (error) {
@@ -170,6 +168,7 @@ export const getAuthorDetails = async (req, res) => {
     const authorProjects = await projectModel.find({
       createdBy: authorId,
       status: "Accepted",
+      visible:true 
     });
     const authorDetails = { author: exists, projects: authorProjects.reverse() };
 
@@ -182,15 +181,17 @@ export const getAuthorDetails = async (req, res) => {
 };
 
 export const updateUserProfile = async (req, res) => {
-  const { _id, email, name, password, url } = req.body;
+  const { _id, email, name, password, url,description } = req.body;
   try {
     await userModel.findByIdAndUpdate(
       { _id: _id },
-      { email, name, password, url }
+      { email, name, password, url,description }
     );
 
+    const updatedProfile = await userModel.findById({_id:_id})
+    console.log(updatedProfile)
     console.log("Updated user Details");
-    return res.json({ success: true, message: "Updated User Details" });
+    return res.json({ success: true, updatedProfile });
   } catch (error) {
     console.log(error.message);
     return res.json({ success: false, message: error.message });
@@ -211,14 +212,17 @@ export const searchContent = async (req, res) => {
   const authors = resultsAuthors.map((item) => item._id);
 
   //filtering the projects(based on mongodb operators)
-  const projects = await projectModel.find({
+  const results = await projectModel.find({
     $or: [
       ...keywords.map((k) => ({ name: k })),
       ...keywords.map((k) => ({ category: k })),
       { createdBy: { $in: authors } },
     ],
     status: "Accepted",
+    visible:true 
   }).populate({path:'createdBy',select:'-password'});
+
+  const projects = results.reverse()
 
   console.log('Fetching Searched Items')
   return res.json({ success: true, projects });
@@ -227,3 +231,41 @@ export const searchContent = async (req, res) => {
     return res.json({success:false,message:error.message})
   }
 };
+
+ export const deleteProject = async (req,res) => {
+  const {projectId} = req.body
+  try {
+    const exists = await projectModel.findById({_id:projectId})
+
+    if (!exists) {
+      return res.json({success:false,message:'Project Dosent Exists'})
+    }
+
+    await projectModel.findByIdAndDelete({_id:projectId})
+
+    console.log('Project Deleted')
+    return res.json({success:true,message:'Project Deleted'})
+  } catch (error) {
+    console.log(error.message)
+    return res.json({success:true,message:error.message})
+  }
+}
+
+export const changeProjectVisibility = async (req,res) => {
+  const {projectId,visible} = req.body
+  console.log(req.body)
+  try {
+    const exists = await projectModel.findById({_id:projectId})
+
+    if (!exists) {
+      return res.json({success:false,message:'Project Dosent Exists'})
+    }
+
+    await projectModel.findByIdAndUpdate({_id:projectId},{visible})
+    console.log('Project Status Updated')
+    return res.json({success:true,message:'Project Status Updated'})
+  } catch (error) {
+    console.log(error.message)
+    return res.json({success:true,message:error.message})
+  }
+}

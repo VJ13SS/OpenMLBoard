@@ -6,7 +6,17 @@ import axios from "axios";
 export default function AddPost() {
   const { editProject, userLoggedIn, baseUrl } = useContext(AppContext);
   const [projectDetails, setProjectDetails] = useState(
-    editProject?.name ? editProject : { type: "add" }
+    editProject?.name
+      ? {
+          project__name: editProject.name,
+          project__description: editProject.description,
+          project__category: editProject.category,
+          project__link_1: editProject.links[0],
+          project__link_2: editProject.links[1],
+          type:'edit',
+          original:editProject
+        }
+      : { type: "add",original:{} }
   );
 
   const onSubmitHandler = async (e) => {

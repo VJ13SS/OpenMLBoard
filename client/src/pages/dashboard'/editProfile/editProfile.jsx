@@ -7,13 +7,14 @@ export default function EditProfile() {
   const [edit, setEdit] = useState(false);
   const { userLoggedIn, setUserLoggedIn, baseUrl } = useContext(AppContext);
   const [userDetails, setUserDetails] = useState(
-    userLoggedIn?.user
-      ? userLoggedIn.user
+    JSON.parse(localStorage.getItem("userDetails")).user
+      ? JSON.parse(localStorage.getItem("userDetails")).user
       : {
           _id: "1234",
           email: "dummy@gmail.com",
           name: "dummy",
           password: "12345678",
+          description:'Hey All,Lets Connect',
           url: "link",
         }
   );
@@ -23,10 +24,18 @@ export default function EditProfile() {
       baseUrl + "/api/user/update-user-profile",
       userDetails
     );
-    setUserLoggedIn((prev) => ({ ...prev, user: userDetails }));
-    localStorage.setItem("userDetails", JSON.stringify(userLoggedIn));
-    console.log(response.data);
+    if(response.data.success){
+      setUserLoggedIn((prev) => ({ ...prev, user: response.data.updatedProfile }));
+
+    localStorage.setItem("userDetails", JSON.stringify({token:userLoggedIn.token,user:response.data.updatedProfile}));
+    
+    }
+    else{
+        console.log(response.data.message);
+    }
+  
   };
+
   const onClickHandler = () => {
     if (edit) {
       updateUserProfile();
@@ -112,6 +121,26 @@ export default function EditProfile() {
               placeholder="https://portfolio.com"
               name="url"
               value={userDetails["url"]}
+              onChange={(e) =>
+                setUserDetails((prev) => ({
+                  ...prev,
+                  [e.target.name]: e.target.value,
+                }))
+              }
+            />
+          )}
+        </span>
+
+        <span>
+          Description {" "}
+          {!edit ? (
+            <span className="profile__item">{userDetails.description}</span>
+          ) : (
+            <input
+              type="text"
+              placeholder="Hey All...Lets Stay Connected"
+              name="description"
+              value={userDetails["description"]}
               onChange={(e) =>
                 setUserDetails((prev) => ({
                   ...prev,

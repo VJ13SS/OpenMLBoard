@@ -18,7 +18,6 @@ import ViewUser from "./pages/viewUser/viewUser";
 export default function App() {
   const { displayLoginPopup } = useContext(AppContext);
   
-  console.log(import.meta.env.VITE_ADMIN_EMAIL)
   return (
     <div className="app">
       <Navbar />

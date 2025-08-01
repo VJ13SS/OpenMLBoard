@@ -3,12 +3,13 @@ import "./project.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import axios from "axios";
 
 export default function Project({ project }) {
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  const { setDashboardOption, setEditProject, getAuthorDetails } = useContext(AppContext);
-
+  const { baseUrl,setDashboardOption, setEditProject, getAuthorDetails,deleteProject } = useContext(AppContext);
 
   const onClickHandler = () => {
     //to edit the project
@@ -22,12 +23,29 @@ export default function Project({ project }) {
     navigate(`/view-user/${id}`);
   };
 
+  const changeProjectVisibility = async (display) => {
+
+    const response = await axios.post(baseUrl + '/api/user/change-project-visibility',{projectId:project._id,visible:display})
+    console.log(response.data.message)
+  }
+
   return (
     <div className="project">
       <h2>
         {project?.name ? project.name : "Project Name"}{" "}
         {location === "/dashboard/view-posts" && (
-          <FaPencilAlt size={20} onClick={onClickHandler} />
+          <div className="project__menu">
+            <BsThreeDotsVertical />
+            <div className="project__drop-down">
+              <span onClick={onClickHandler} style={{color:'goldenrod'}}>Edit</span>
+              <span style={{color:'black'}} onClick={()=>changeProjectVisibility(project.visible ? false:true)}>{project.visible ? 'Hide':'Show'}</span>
+              <span style={{color:'red'}} onClick={() => deleteProject(project._id)}>Delete</span>
+              
+            </div>
+            
+          </div>
+          
+          
         )}
       </h2>
       <p>

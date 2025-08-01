@@ -32,3 +32,31 @@
 .project__links span{
     text-decoration: underline;
 }
+
+.project__menu{
+    position: relative;
+}
+.project__drop-down{
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    position: absolute;
+    top: 0;
+    right: 40%;
+    border: 1px solid gray;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 7px;
+}
+.project__drop-down span{
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.project__drop-down span:hover{
+    text-decoration: underline;
+}
+
+.project__menu:hover .project__drop-down{
+    display: flex;
+}

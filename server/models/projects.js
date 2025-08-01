@@ -6,6 +6,7 @@ const projectSchema = new mongoose.Schema({
     category:{type:String,required:true},
     links:{type:[String],required:true},
     status:{type:String,default:'Pending'},
+    visible:{type:Boolean,default:true},
     message:{type:String,default:'We are evaluating your work..!'},
     createdBy:{
         type:mongoose.Schema.Types.ObjectId,

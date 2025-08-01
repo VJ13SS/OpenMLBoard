@@ -10,15 +10,23 @@
 
 .user__profile{
     width: 80vw;
-    height: 35vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
     border-radius: 15px;
     font-weight: 500;
+    font-size: 17px;
+    background-color: white;
+    box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2);
+}
+
+.user__profile img{
+    width: 100px;
+    height: 70px;
 }
 
 .user__profile a{
@@ -32,16 +40,17 @@
     gap: 15px;
     width: 100%;
     border-radius: 15px;
-    padding: 25px 10px;
+    padding: 10px;
 }
 
 .user__contribution{
     padding: 10px;
-    border-radius: 5px;
-    width: 45%;
-    border: 1px solid black;
-    min-height: 30vh;
-}
+    border-radius: 15px;
+    width: 47%;
+    min-height: 35vh;
+    background-color: white;
+    border: 1px solid gray;
+    box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2);}
 
 .user__contribution span{
     font-size: 25px;
@@ -54,5 +63,11 @@
     font-size: 15px;
     margin-top: 10px;
     line-height: 30px;
+}
+
+@media(max-width:1000px){
+    .user__contribution{
+        width: 85%;
+    }
 }
 

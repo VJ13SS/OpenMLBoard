@@ -6,3 +6,33 @@
   padding: 20px;
   min-height: 90vh;
 }
+
+.search-bar{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.search-bar input{
+    padding: 3px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 290px;
+    padding-left: 5px;
+    outline: none;
+}
+.search-bar button{
+    padding: 5px;
+    
+    width: 45px;
+    font-size: 17px;
+    background-color: blue;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+}

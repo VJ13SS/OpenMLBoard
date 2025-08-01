@@ -10,6 +10,10 @@
   display: none;
 }
 
+.app{
+
+}
+
 .no-scroll{
   overflow-y: hidden;
 }

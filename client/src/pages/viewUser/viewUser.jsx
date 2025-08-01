@@ -16,6 +16,7 @@ export default function ViewUser() {
   return (
     <div className="view-user">
       <div className="user__profile">
+        <img src="/Images/Sample_User_Icon.png" />
         <span>
           {authorDetails?.author ? authorDetails.author.name : "dummy"}
         </span>
@@ -24,8 +25,8 @@ export default function ViewUser() {
             ? authorDetails.author.email
             : "dummy@gmail.com"}
         </span>
-        <a href="#">
-          {authorDetails?.author ? authorDetails.author.url : "Know Me More"}
+        <a href={authorDetails?.author ? authorDetails.author.url : "#"}>
+          Know Me More
         </a>
       </div>
       <div className="user__contributions">

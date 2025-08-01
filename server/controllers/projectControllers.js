@@ -4,7 +4,7 @@ import projectModel from "../models/projects.js";
 export const getAllProjects = async (req, res) => {
   try {
     const projects = await projectModel
-      .find({ status: "Accepted" })
+      .find({ status: "Accepted",visible:true })
       .populate({ path: "createdBy", select: "-password" })
 
     console.log("Fetching All Accepted Projects");
@@ -44,3 +44,4 @@ export const getProjectDetails = async (req,res) => {
     return res.json({success:false,message:error.message})
   }
 }
+

@@ -30,7 +30,7 @@ export const AppContextProvider = (props) => {
   const getUserProjects = async () => {
     const response = await axios.get(
       baseUrl + "/api/projects/get-user-projects",
-      { headers: { token: userLoggedIn.token } }
+      { headers: { token: JSON.parse(localStorage.getItem("userDetails")).token } }
     );
     if (response.data.success) {
       setUserProjects(response.data.userProjects);
@@ -73,6 +73,15 @@ export const AppContextProvider = (props) => {
     }
   };
 
+  const deleteProject = async (id) => {
+    if(!confirm('Do you wish to delete the project?')){
+      return
+    }
+    const response = await axios.post(baseUrl + '/api/user/delete-project',{projectId:id})
+    console.log(response.data.message)
+    getUserProjects()
+  }
+
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
       setUserLoggedIn(JSON.parse(localStorage.getItem("userDetails")));
@@ -109,6 +118,7 @@ export const AppContextProvider = (props) => {
     getProjectDetails,
     projectId,
     setProjectId,
+    deleteProject
   };
 
   return (
