@@ -80,8 +80,8 @@ export default function Project({ project }) {
         <span> Project Links</span>
         {project?.links ? (
           project.links.map((link, indx) => (
-            <a href="#" key={indx}>
-              {indx + 1}.{')'} {link}{" "}
+            <a href="link" key={indx}>
+              {link}{" "}
             </a>
           ))
         ) : (

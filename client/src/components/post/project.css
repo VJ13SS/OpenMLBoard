@@ -24,7 +24,7 @@
 .project__links{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
     width: 90%;
     overflow-x: scroll;
 }
@@ -46,7 +46,6 @@
     border: 1px solid gray;
     padding: 5px 10px;
     background-color: white;
-    background-color: red;
     width: 80px;
     border-radius: 7px;
 }

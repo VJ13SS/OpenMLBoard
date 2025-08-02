@@ -109,6 +109,9 @@ export const addNewProject = async (req, res) => {
       createdBy: user._id,
       name: project__name,
       category: project__category,
+      description: project__description,
+      category: project__category,
+      links: [project__link_1, project__link_2],
       status: "Accepted",
     });
 
