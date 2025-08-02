@@ -26,8 +26,6 @@
     font-weight: 500;
     max-width: 95%;
     padding-left: 10px;
-    border: 1px solid rgb(227, 223, 223);
-    border-radius: 5px;
     height: 95%;
     overflow-y: scroll;
 }
