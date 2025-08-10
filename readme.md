@@ -64,7 +64,3 @@ Open ML Board is an open-source MERN stack platform where developers can share t
 ## License
 
 This project is licensed under the MIT License.
-
-```
-Do you want me to also make a **version with a live demo link and some eye-catching badges** so it looks more attractive on GitHub? That can make recruiters click on it instantly.
-```
